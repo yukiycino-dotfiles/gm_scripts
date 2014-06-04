@@ -2,7 +2,7 @@
 // @name           LDRize
 // @namespace      http://white.s151.xrea.com/
 // @description    j,k,v,p,o,:,f,? + l,s,i
-// @include        https://www.google.co.jp/search?*
+// @include        https://www.google.*/search?*
 // ==/UserScript==
 
 const SCRIPT_VERSION = "2011.11.11"	//sharedObject
