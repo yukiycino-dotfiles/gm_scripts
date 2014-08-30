@@ -1,12 +1,12 @@
 <UserScriptConfig>
-	<Script basedir="Minibuffer" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Minibuffer" enabled="true" filename="minibuffer.user.js" installTime="1354076029683" modified="1401076143000" name="Minibuffer" namespace="http://white.s151.xrea.com/" runAt="document-end" uuid="e525ce7a-ade0-244e-8526-94a2e3c51742" version="null" installurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js" updateurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js">
+	<Script basedir="Minibuffer" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Minibuffer" enabled="true" filename="minibuffer.user.js" installTime="1354076029683" modified="1410603317000" name="Minibuffer" namespace="http://white.s151.xrea.com/" runAt="document-end" updateMetaStatus="unknown" uuid="e525ce7a-ade0-244e-8526-94a2e3c51742" version="null" installurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js" updateurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js">
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_getValue</Grant>
 		<Grant>GM_setValue</Grant>
 		<Grant>GM_xmlhttpRequest</Grant>
 		<Include>*</Include>
 	</Script>
-	<Script basedir="LDRize" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="j,k,v,p,o,:,f,? + l,s,i" enabled="true" filename="ldrize.user.js" installTime="1354076010036" modified="1401862159000" name="LDRize" namespace="http://white.s151.xrea.com/" runAt="document-end" uuid="dd9fd44c-9e80-d94b-a2f9-3c62c761aa5b" version="null" installurl="http://exe.tyo.ro/2011/11/11/script/ldrize.user.js" updateurl="http://exe.tyo.ro/2011/11/11/script/ldrize.user.js">
+	<Script basedir="LDRize" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="j,k,v,p,o,:,f,? + l,s,i" enabled="true" filename="ldrize.user.js" installTime="1354076010036" modified="1410603317000" name="LDRize" namespace="http://white.s151.xrea.com/" runAt="document-end" updateMetaStatus="unknown" uuid="dd9fd44c-9e80-d94b-a2f9-3c62c761aa5b" version="null" installurl="http://exe.tyo.ro/2011/11/11/script/ldrize.user.js" updateurl="http://exe.tyo.ro/2011/11/11/script/ldrize.user.js">
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_getValue</Grant>
 		<Grant>GM_registerMenuCommand</Grant>
@@ -15,7 +15,7 @@
 		<Grant>unsafeWindow</Grant>
 		<Include>https://www.google.*/search?*</Include>
 	</Script>
-	<Script basedir="google_search_ajax_kille" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="auto redirect to the non-AJAX URL." enabled="true" filename="google_search_ajax_kille.user.js" installTime="1335529367761" modified="1401076143000" name="Google Search AJAX Killer" namespace="" runAt="document-end" uuid="4e2714f9-81fa-824c-b9fe-3e791a6135b5" version="1.0">
+	<Script basedir="google_search_ajax_kille" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="auto redirect to the non-AJAX URL." enabled="true" filename="google_search_ajax_kille.user.js" installTime="1335529367761" modified="1410603317000" name="Google Search AJAX Killer" namespace="" runAt="document-end" updateMetaStatus="unknown" uuid="4e2714f9-81fa-824c-b9fe-3e791a6135b5" version="1.0" installurl="null" updateurl="null">
 		<Grant>none</Grant>
 		<Include>http://www.google.com/*</Include>
 		<Include>http://www.google.co.jp/*</Include>
@@ -23,34 +23,34 @@
 		<Include>http://www.google.*/*</Include>
 		<Include>https://encrypted.google.com/*</Include>
 	</Script>
-	<Script basedir="nicoantifocus" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="ニコニコ動画で、Flashプレイヤーにフォーカスしないようにする。" enabled="true" filename="nicoantifocus.user.js" installTime="1335529367764" modified="1401076143000" name="NicoAntiFocus" namespace="http://d.hatena.ne.jp/nokturnalmortum/20080802/1217633913" runAt="document-end" uuid="f342b0c1-d5ee-bf4a-9638-86813ec0a298" version="null">
+	<Script basedir="nicoantifocus" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="ニコニコ動画で、Flashプレイヤーにフォーカスしないようにする。" enabled="true" filename="nicoantifocus.user.js" installTime="1335529367764" modified="1410603317000" name="NicoAntiFocus" namespace="http://d.hatena.ne.jp/nokturnalmortum/20080802/1217633913" runAt="document-end" updateMetaStatus="unknown" uuid="f342b0c1-d5ee-bf4a-9638-86813ec0a298" version="null" installurl="null" updateurl="null">
 		<Grant>none</Grant>
 		<Include>http://www.nicovideo.jp/watch/*</Include>
 		<Include>http://de.nicovideo.jp/watch/*</Include>
 		<Include>http://es.nicovideo.jp/watch/*</Include>
 		<Include>http://tw.nicovideo.jp/watch/*</Include>
 	</Script>
-	<Script basedir="amazon_short_uri" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Short URI for amazon." enabled="true" filename="amazon_short_uri.user.js" installTime="1335529367765" modified="1401076143000" name="Amazon short URI" namespace="http://www.misao.gr.jp/~koshian/" runAt="document-end" uuid="15f74b76-f124-6f42-8236-97dede1a8672" version="null">
+	<Script basedir="amazon_short_uri" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Short URI for amazon." enabled="true" filename="amazon_short_uri.user.js" installTime="1335529367765" modified="1410603317000" name="Amazon short URI" namespace="http://www.misao.gr.jp/~koshian/" runAt="document-end" updateMetaStatus="unknown" uuid="15f74b76-f124-6f42-8236-97dede1a8672" version="null" installurl="null" updateurl="null">
 		<Grant>none</Grant>
 		<Include>http://www.amazon.co.jp/*</Include>
 		<Include>http://amazon.co.jp/*</Include>
 		<Include>http://www.amazon.jp/*</Include>
 		<Include>http://amazon.jp/*</Include>
 	</Script>
-	<Script basedir="nicovideononindication" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" filename="nicovideononindication.user.js" installTime="1335529367766" modified="1401076143000" name="NicovideoNonIndication" namespace="http://d.hatena.ne.jp/dionore/" runAt="document-end" uuid="ed0741fb-7a4d-de49-b1f2-2f31c6e9be37" version="null">
+	<Script basedir="nicovideononindication" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" filename="nicovideononindication.user.js" installTime="1335529367766" modified="1410603317000" name="NicovideoNonIndication" namespace="http://d.hatena.ne.jp/dionore/" runAt="document-end" updateMetaStatus="unknown" uuid="ed0741fb-7a4d-de49-b1f2-2f31c6e9be37" version="null" installurl="null" updateurl="null">
 		<Grant>none</Grant>
 		<Include>http://www.nicovideo.jp/watch/*</Include>
 	</Script>
-	<Script basedir="EndTime2" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Toodledoの見積もり時間をリアルタイムに表示する" enabled="true" filename="endtime2.user.js" installTime="1338774456722" modified="1401076143000" name="EndTime2" namespace="http://blog.toodledotips.jp/?p=206" runAt="document-end" uuid="9fddb5aa-61cd-ea42-844c-b350a2c51501" version="null" installurl="file:///Users/dionore/Dropbox/endtime2.user.js" updateurl="file:///Users/dionore/Dropbox/endtime2.user.js">
+	<Script basedir="EndTime2" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Toodledoの見積もり時間をリアルタイムに表示する" enabled="true" filename="endtime2.user.js" installTime="1338774456722" modified="1410603317000" name="EndTime2" namespace="http://blog.toodledotips.jp/?p=206" runAt="document-end" updateMetaStatus="unknown" uuid="9fddb5aa-61cd-ea42-844c-b350a2c51501" version="null" installurl="file:///Users/dionore/Dropbox/endtime2.user.js" updateurl="file:///Users/dionore/Dropbox/endtime2.user.js">
 		<Grant>none</Grant>
 		<Include>http://www.toodledo.com/tasks/*</Include>
 	</Script>
-	<Script basedir="ToodleChute" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Toodledoでタスクシュートしたくなるツール" enabled="true" filename="toodle_chute.min.user.js" installTime="1354339578764" modified="1401076143000" name="ToodleChute" namespace="https://github.com/nettabo/toodlechute" runAt="document-end" uuid="b71b7d9e-d403-3144-bd5e-a812c189c107" version="0.1.5" installurl="https://github.com/nettabo/toodlechute/raw/master/toodle_chute.min.user.js" updateurl="https://github.com/nettabo/toodlechute/raw/master/toodle_chute.min.user.js">
+	<Script basedir="ToodleChute" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Toodledoでタスクシュートしたくなるツール" enabled="true" filename="toodle_chute.min.user.js" installTime="1354339578764" modified="1410603317000" name="ToodleChute" namespace="https://github.com/nettabo/toodlechute" runAt="document-end" updateMetaStatus="unknown" uuid="b71b7d9e-d403-3144-bd5e-a812c189c107" version="0.1.5" installurl="https://github.com/nettabo/toodlechute/raw/master/toodle_chute.min.user.js" updateurl="https://github.com/nettabo/toodlechute/raw/master/toodle_chute.min.user.js">
 		<Grant>none</Grant>
 		<Include>http://www.toodledo.com/tasks/index.php*</Include>
 		<Include>https://www.toodledo.com/tasks/index.php*</Include>
 	</Script>
-	<Script basedir="Google_Search_Tools_Back" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Brings back Google Search tools." enabled="true" filename="152796.user.js" installTime="1387765715000" modified="1401076143000" name="Google Search Tools Back" namespace="http://akr.tw/" runAt="document-end" uuid="d9af98f1-c8ee-9346-ad30-2f67cf120f85" version="1.6.5" installurl="https://userscripts.org/scripts/source/152796.user.js" updateurl="https://userscripts.org/scripts/source/152796.meta.js">
+	<Script basedir="Google_Search_Tools_Back" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Brings back Google Search tools." enabled="true" filename="152796.user.js" installTime="1387765715000" modified="1410603317000" name="Google Search Tools Back" namespace="http://akr.tw/" runAt="document-end" updateMetaStatus="unknown" uuid="d9af98f1-c8ee-9346-ad30-2f67cf120f85" version="1.6.5" installurl="https://userscripts.org/scripts/source/152796.user.js" updateurl="https://userscripts.org/scripts/source/152796.meta.js">
 		<Grant>GM_addStyle</Grant>
 		<Include>http://www.google.*/</Include>
 		<Include>http://www.google.*/?*</Include>
@@ -68,7 +68,7 @@
 		<Include>https://encrypted.google.*/search*</Include>
 		<Include>https://encrypted.google.*/webhp*</Include>
 	</Script>
-	<Script basedir="social-bookmark-counter-on-google-search" checkRemoteUpdates="1" dependhash="19ddcdd622a468161879e765c56b4e5d93baa5d1" description="Script Summary: Supporting Delicious, Facebook, Twitter, Hatena, Digg and StumbleUpon." enabled="true" filename="115527.user.js" installTime="1400987492000" modified="1401076143000" name="social-bookmark-counter-on-google-search" namespace="https://github.com/ikeikeikeike" runAt="document-end" uuid="bd7586bb-3c23-ec44-9922-8dc8b198b8e0" version="0.9.1" installurl="https://userscripts.org/scripts/source/115527.user.js" updateurl="https://userscripts.org/scripts/source/115527.meta.js">
+	<Script basedir="social-bookmark-counter-on-google-search" checkRemoteUpdates="1" dependhash="19ddcdd622a468161879e765c56b4e5d93baa5d1" description="Script Summary: Supporting Delicious, Facebook, Twitter, Hatena, Digg and StumbleUpon." enabled="true" filename="115527.user.js" installTime="1400987492000" modified="1410603317000" name="social-bookmark-counter-on-google-search" namespace="https://github.com/ikeikeikeike" runAt="document-end" updateMetaStatus="unknown" uuid="bd7586bb-3c23-ec44-9922-8dc8b198b8e0" version="0.9.1" installurl="https://userscripts.org/scripts/source/115527.user.js" updateurl="https://userscripts.org/scripts/source/115527.meta.js">
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_xmlhttpRequest</Grant>
 		<Include>http://www.google.*/search*</Include>

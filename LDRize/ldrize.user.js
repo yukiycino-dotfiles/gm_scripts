@@ -2,6 +2,12 @@
 // @name           LDRize
 // @namespace      http://white.s151.xrea.com/
 // @description    j,k,v,p,o,:,f,? + l,s,i
+// @grant          GM_addStyle
+// @grant          GM_getValue
+// @grant          GM_registerMenuCommand
+// @grant          GM_setValue
+// @grant          GM_xmlhttpRequest
+// @grant          unsafeWindow
 // @include        https://www.google.*/search?*
 // ==/UserScript==
 

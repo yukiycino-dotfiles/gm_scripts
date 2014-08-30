@@ -2,6 +2,10 @@
 // @name           Minibuffer
 // @namespace      http://white.s151.xrea.com/
 // @description    Minibuffer
+// @grant          GM_addStyle
+// @grant          GM_getValue
+// @grant          GM_setValue
+// @grant          GM_xmlhttpRequest
 // @include        *
 // ==/UserScript==
 
