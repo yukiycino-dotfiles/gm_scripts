@@ -1,10 +1,12 @@
 <UserScriptConfig>
-	<Script basedir="Minibuffer" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Minibuffer" enabled="true" filename="minibuffer.user.js" installTime="1354076029683" modified="1410603317000" name="Minibuffer" namespace="http://white.s151.xrea.com/" runAt="document-end" updateMetaStatus="unknown" uuid="e525ce7a-ade0-244e-8526-94a2e3c51742" version="null" installurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js" updateurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js">
+	<Script basedir="Minibuffer" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Minibuffer" enabled="true" filename="minibuffer.user.js" installTime="1354076029683" modified="1410603545000" name="Minibuffer" namespace="http://white.s151.xrea.com/" runAt="document-end" updateMetaStatus="unknown" uuid="e525ce7a-ade0-244e-8526-94a2e3c51742" version="null" installurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js" updateurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js">
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_getValue</Grant>
+		<Grant>GM_registerMenuCommand</Grant>
 		<Grant>GM_setValue</Grant>
 		<Grant>GM_xmlhttpRequest</Grant>
-		<Include>*</Include>
+		<Grant>unsafeWindow</Grant>
+		<Include>https://www.google.*/search?*</Include>
 	</Script>
 	<Script basedir="LDRize" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="j,k,v,p,o,:,f,? + l,s,i" enabled="true" filename="ldrize.user.js" installTime="1354076010036" modified="1410603317000" name="LDRize" namespace="http://white.s151.xrea.com/" runAt="document-end" updateMetaStatus="unknown" uuid="dd9fd44c-9e80-d94b-a2f9-3c62c761aa5b" version="null" installurl="http://exe.tyo.ro/2011/11/11/script/ldrize.user.js" updateurl="http://exe.tyo.ro/2011/11/11/script/ldrize.user.js">
 		<Grant>GM_addStyle</Grant>
