@@ -11,9 +11,9 @@
 // @include        https://www.google.*/search?*
 // ==/UserScript==
 
-
 var VERSION = "2009.12.06"; // 2011.03.25 for firefox 4.0 via http://d.hatena.ne.jp/wlt/20110106/1294306315
 // 2011.11.11  sharedObject
+var sharedObject = {}
 
 var Class = function(){return function(){this.initialize.apply(this,arguments)}};
 
