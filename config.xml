@@ -8,7 +8,7 @@
 		<Grant>unsafeWindow</Grant>
 		<Include>https://www.google.*/search?*</Include>
 	</Script>
-	<Script basedir="google_search_ajax_kille" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="auto redirect to the non-AJAX URL." enabled="true" noframes="false" filename="google_search_ajax_kille.user.js" installTime="1335529367761" modified="1410603317000" name="Google Search AJAX Killer" namespace="" runAt="document-end" updateMetaStatus="unknown" uuid="4e2714f9-81fa-824c-b9fe-3e791a6135b5" version="1.0" installurl="null" updateurl="null">
+	<Script basedir="google_search_ajax_kille" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="auto redirect to the non-AJAX URL." enabled="true" noframes="false" filename="google_search_ajax_kille.user.js" installTime="1335529367761" modified="1428158221000" name="Google Search AJAX Killer" namespace="" runAt="document-end" updateMetaStatus="unknown" uuid="4e2714f9-81fa-824c-b9fe-3e791a6135b5" version="1.0" installurl="null" updateurl="null">
 		<Grant>none</Grant>
 		<Include>http://www.google.com/*</Include>
 		<Include>http://www.google.co.jp/*</Include>
@@ -43,24 +43,6 @@
 		<Include>http://www.toodledo.com/tasks/index.php*</Include>
 		<Include>https://www.toodledo.com/tasks/index.php*</Include>
 	</Script>
-	<Script basedir="Google_Search_Tools_Back" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Brings back Google search tools to left side and displays drop-down menu items." enabled="true" noframes="false" filename="152796.user.js" installTime="1428147391000" modified="1428147391000" name="Google Search Tools Back" namespace="http://akr.tw/" runAt="document-end" updateMetaStatus="unknown" uuid="09690d99-3448-7e40-ab99-e9650dc62360" version="1.7.3" installurl="https://userscripts.org/scripts/source/152796.user.js" updateurl="https://userscripts.org/scripts/source/152796.meta.js">
-		<Grant>GM_addStyle</Grant>
-		<Include>http://www.google.*/</Include>
-		<Include>http://www.google.*/?*</Include>
-		<Include>http://www.google.*/#*</Include>
-		<Include>http://www.google.*/search*</Include>
-		<Include>http://www.google.*/webhp*</Include>
-		<Include>https://www.google.*/</Include>
-		<Include>https://www.google.*/?*</Include>
-		<Include>https://www.google.*/#*</Include>
-		<Include>https://www.google.*/search*</Include>
-		<Include>https://www.google.*/webhp*</Include>
-		<Include>https://encrypted.google.*/</Include>
-		<Include>https://encrypted.google.*/?*</Include>
-		<Include>https://encrypted.google.*/#*</Include>
-		<Include>https://encrypted.google.*/search*</Include>
-		<Include>https://encrypted.google.*/webhp*</Include>
-	</Script>
 	<Script basedir="social-bookmark-counter-on-google-search" checkRemoteUpdates="1" dependhash="19ddcdd622a468161879e765c56b4e5d93baa5d1" description="Script Summary: Supporting Delicious, Facebook, Twitter, Hatena, Digg and StumbleUpon." enabled="true" noframes="false" filename="115527.user.js" installTime="1400987492000" modified="1410603317000" name="social-bookmark-counter-on-google-search" namespace="https://github.com/ikeikeikeike" runAt="document-end" updateMetaStatus="unknown" uuid="bd7586bb-3c23-ec44-9922-8dc8b198b8e0" version="0.9.1" installurl="https://userscripts.org/scripts/source/115527.user.js" updateurl="https://userscripts.org/scripts/source/115527.meta.js">
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_xmlhttpRequest</Grant>
@@ -70,5 +52,9 @@
 		<Include>https://www.google.*/custom*</Include>
 		<Require filename="jquery-2.0.3.min.js"/>
 		<Require filename="bookmarkhub.js"/>
+	</Script>
+	<Script basedir="Google_Search_Tools_Back" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Brings back Google search tools to left side and displays drop-down menu items." enabled="true" noframes="false" filename="Google_Search_Tools_Back.user.js" installTime="1428158474000" modified="1428158474000" name="Google Search Tools Back" namespace="http://userstyles.org" runAt="document-start" updateMetaStatus="unknown" uuid="2581374d-689f-6648-b0c5-96990b6b13dc" version="11.8" installurl="https://greasyfork.org/scripts/2959-google-search-tools-back/code/Google%20Search%20Tools%20Back.user.js" updateurl="https://greasyfork.org/scripts/2959-google-search-tools-back/code/Google%20Search%20Tools%20Back.user.js">
+		<Grant>none</Grant>
+		<Include>*</Include>
 	</Script>
 </UserScriptConfig>
