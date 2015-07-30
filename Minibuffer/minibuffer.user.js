@@ -1779,7 +1779,7 @@ const SCRIPT_URL     = "http://userscripts.org/scripts/show/11562"
 const SITEINFO = [
 {
   "name":"Google",
-  "paragraph":"id(\"res\")//li[contains(concat(\" \",normalize-space(@class),\" \"),\" g \")]",
+  "paragraph":"id(\"res\")//div[contains(concat(\" \",normalize-space(@class),\" \"),\" g \")]|id(\"res\")//li[contains(concat(\" \",normalize-space(@class),\" \"),\" g \")]",
   "domain":"^https?://(www|encrypted)\\.(?:l\\.)?google\\.(?:[^.]+\\.)?[^./]+/",
   "stripe":"1",
   "link":".//a",
