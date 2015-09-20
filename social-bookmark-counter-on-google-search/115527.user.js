@@ -264,10 +264,12 @@ function renderHtml(link, total, url, className) {
     var s = link.parentNode.parentNode.getElementsByClassName('r')[0];
     var ss = link.parentNode.parentNode.parentNode.getElementsByClassName('r')[0];
     if (s) {
+      s.setAttribute('style', 'overflow: visible;');
       var tonode = s.childNodes[0];
       tonode.parentNode.insertBefore(span, tonode.parentNode.firstChild.nextSibling);
     }
     else if (ss) {
+      ss.setAttribute('style', 'overflow: visible;');
       var tonode = ss.childNodes[0];
       tonode.parentNode.insertBefore(span, tonode.parentNode.firstChild.nextSibling);
     }

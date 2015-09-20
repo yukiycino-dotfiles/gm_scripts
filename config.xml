@@ -43,7 +43,7 @@
 		<Include>http://www.toodledo.com/tasks/index.php*</Include>
 		<Include>https://www.toodledo.com/tasks/index.php*</Include>
 	</Script>
-	<Script basedir="social-bookmark-counter-on-google-search" checkRemoteUpdates="1" dependhash="19ddcdd622a468161879e765c56b4e5d93baa5d1" description="Script Summary: Supporting Delicious, Facebook, Twitter, Hatena, Digg and StumbleUpon." enabled="true" noframes="false" filename="115527.user.js" installTime="1400987492000" modified="1438252633000" name="social-bookmark-counter-on-google-search" namespace="https://github.com/ikeikeikeike" runAt="document-end" updateMetaStatus="unknown" uuid="bd7586bb-3c23-ec44-9922-8dc8b198b8e0" version="0.9.1" installurl="https://userscripts.org/scripts/source/115527.user.js" updateurl="https://userscripts.org/scripts/source/115527.meta.js">
+	<Script basedir="social-bookmark-counter-on-google-search" checkRemoteUpdates="1" dependhash="19ddcdd622a468161879e765c56b4e5d93baa5d1" description="Script Summary: Supporting Delicious, Facebook, Twitter, Hatena, Digg and StumbleUpon." enabled="true" noframes="false" filename="115527.user.js" installTime="1400987492000" modified="1442776787000" name="social-bookmark-counter-on-google-search" namespace="https://github.com/ikeikeikeike" runAt="document-end" updateMetaStatus="unknown" uuid="bd7586bb-3c23-ec44-9922-8dc8b198b8e0" version="0.9.1" installurl="https://userscripts.org/scripts/source/115527.user.js" updateurl="https://userscripts.org/scripts/source/115527.meta.js">
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_xmlhttpRequest</Grant>
 		<Include>http://www.google.*/search*</Include>
