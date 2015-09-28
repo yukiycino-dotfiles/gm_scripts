@@ -2,10 +2,10 @@
 // @name        Google Hit Hider by Domain (Search Filter / Block Sites)
 // @author      Jefferson "jscher2000" Scher
 // @namespace   JeffersonScher
-// @version     1.6.5
-// @copyright   Copyright 2014 Jefferson Scher
+// @version     1.6.9
+// @copyright   Copyright 2015 Jefferson Scher
 // @license     BSD with restriction
-// @description Block unwanted sites from your Google, DuckDuckGo and Startpage.com search results. For Firefox+Greasemonkey or Chrome+Tampermonkey. v1.6.5 2014-12-26
+// @description Block unwanted sites from your Google, DuckDuckGo and Startpage.com search results. For Firefox+Greasemonkey or Chrome+Tampermonkey. v1.6.9 2015-09-13
 // @include     http*://www.google.*/*
 // @include     http*://news.google.*/*
 // @include     http*://images.google.*/*
@@ -19,13 +19,12 @@
 // @grant       GM_setValue
 // @grant       GM_registerMenuCommand
 // @grant       GM_deleteValue
-// @grant       GM_log
 // @grant       GM_xmlhttpRequest
-// @resource    mycon http://www.jeffersonscher.com/gm/src/gfrk-GHHbD-ver165.png
+// @resource    mycon http://www.jeffersonscher.com/gm/src/gfrk-GHHbD-ver169.png
 // ==/UserScript==
 var script_about = "https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites";
 /*
-Copyright (c) 2014 Jefferson Scher. All rights reserved.
+Copyright (c) 2015 Jefferson Scher. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met and subject to the following restriction:
 
@@ -40,12 +39,12 @@ RESTRICTION: USE WITH ANY @include or @match THAT COVERS FACEBOOK.COM IS PROHIBI
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/* SITE RESULTS STRUCTURE as of 2/15/2014
-Google: div#res > div#search > div#ires > ol#rso > li.g > div.rc > h3.r > a
+/* SITE RESULTS STRUCTURE
+Google: div#res > div#search > div > div#ires > div.srg | ol#rso > div.g > div.rc > h3.r > a
 Startpage: div#results > ol > li > div.result > h3 > a
 DuckDuckGo: div#links > div.results_links_deep > div.links_main > h2 > a
-   DETECTED on 7/17/2014
 Google in-depth articles: div#res > div#search > div#ires > ol#rso > div > li.g.card-section or li.g.ct-cs > div.rc > div > h3.r > a
+Google Images (default): div#res > div#search > div > div#ires > div#rso > div#isr_mc > div > div#rg > div#rg_s > div.rg_di.rg_el.ivg-ig > a > img
 */
 
 // == == == To override the style of the script's buttons and panes, use the custom style feature == == ==
@@ -72,9 +71,10 @@ if (location.search.indexOf("tbm=isch") > -1){
   var ghhbd_imgsty = document.createElement("style");
   ghhbd_imgsty.id = "ghhStyleImgResults";
   ghhbd_imgsty.setAttribute("type", "text/css");
-  ghhbd_imgsty.appendChild(document.createTextNode('div[imgblock="regular"] img {opacity:0.1 !important;} div[imgblock="regular"] a div {display:block !important; opacity:0.6 !important;} div[imgblock="regular"] img:hover {opacity:0.5 !important;} div[imgblock="pban"]{opacity:0 !important;}'));
+  ghhbd_imgsty.appendChild(document.createTextNode('div[imgblock="regular"] img{opacity:0.1 !important} div[imgblock="regular"] a div{display:block !important;opacity:0.6 !important} div[imgblock="regular"] img:hover{opacity:0.5 !important} div[imgblock="pban"]{background-color:#aaa !important;border-radius:6px !important} div[imgblock="pban"] a{display:none !important}'));
   document.body.appendChild(ghhbd_imgsty);
-}
+  var isch=true;
+} else var isch=false;
 
 // Style override example: .ghhd{font-size:0.8em;text-decoration:line-through;}
 var custSty = GM_getValue("hiderStyles");
@@ -91,7 +91,7 @@ document.body.appendChild(ghhbd_custsty);
 var currentG;
 if (location.host.indexOf("google.") > -1) currentG = location.host.substr(location.host.indexOf("google."));
 else currentG = location.hostname;
-if (currentG.indexOf("duckduckgo") > -1) GM_addStyle(".links_main{overflow:visible !important;} .ghhb{font-size:12px!important;margin-left:4px!important;} .result__a{display:inline!important;}");
+if (currentG.indexOf("duckduckgo") > -1) GM_addStyle(".links_main,.result__title{overflow:visible !important;} .ghhb{font-size:12px!important;margin-left:4px!important;} .result__a{display:inline!important;}");
 
 // == == == Globals for preferences == == ==
 var blist, defaultTxts, txtsPref, txts, defaultPrefs, ghhPrefs, ghhPrefO, showYN, mpopen, mbstyle, bbstyle, bbpos, addAt, listchgs, bLUopen, bAggress, bAJAX, bMutOb, pref1click, betatest, MutOb, chgMon, opts, kids;
@@ -232,15 +232,20 @@ function setMutationWatch(){
   if (MutOb && bMutOb == "Y"){
     chgMon = new MutOb(function(mutationSet){
       mutationSet.forEach(function(mutation){
+        if (mutation.type == "childList"){
         for (var i=0; i<mutation.addedNodes.length; i++){
           if (mutation.addedNodes[i].nodeType == 1){
             checkNode(mutation.addedNodes[i]);
           }
         }
+        } else { // attribute mutation on Google Images
+          if(mutation.target.className == "rg_l") checkNode(mutation.target.parentNode);
+        }
       });
     });
     // attach chgMon to document.body
-    opts = {childList: true, subtree: true};
+    if (isch == true) opts = {childList: true, subtree: true, attributes: true, attributeFilter: ["href"], characterData: false};
+    else opts = {childList: true, subtree: true, attributes: false, characterData: false};
     chgMon.observe(document.body, opts);
   } else { // Legacy browser support
     document.body.addEventListener("DOMSubtreeModified", checkOlist, false);
@@ -250,9 +255,9 @@ function setMutationWatch(){
 var ignoreNodeNames = "|BODY|#text|#comment|INPUT|BUTTON|SCRIPT|LI|A|FORM|";
 var ignoreIds = "|leftnav|leftnavc|foot|ghhtemp|ghhblockform|ghhmanageform|ghhsitelist|ghhpbanlist|rhs|rhscol|";
 var ignoreClass = "|ghhider|inlinediv|ghh1time|";
-var t_ap;
+var t_ap, t_gimg;
 
-function checkOlist(e){ // Check for new results
+function checkOlist(e){ // Check for new results // TODO for old Firefoxes: non-LI layout
   // AutoPager extension
   if (e.target.id){if (e.target.id == "navcnt"){if (e.target.getElementsByClassName("ghhider").length>0){
     if (t_ap) window.clearTimeout(t_ap);
@@ -287,8 +292,8 @@ function checkNode(el){
     if (t_ap) window.clearTimeout(t_ap);
     t_ap = window.setTimeout(refreshListeners, 500);
   }
-  if (el.nodeName == "LI") var nlist = [el];
-  else var nlist = el.querySelectorAll('li');
+  if (el.nodeName == "LI" || (el.nodeName == "DIV" && (el.className == "g" || el.className.indexOf("rg_di")>-1 || el.className == "rgsh"))) var nlist = [el];
+  else var nlist = el.querySelectorAll('li.g, div.g, div.rg_di');
   if (currentG.indexOf("google") < 0) var nlist = el.querySelectorAll('div.result, div.links_main');
   if (nlist.length > 0){
     hidehits(nlist,false);
@@ -298,17 +303,21 @@ function checkNode(el){
 function hidehits(liels,ovrd){
   if (!liels){
     if (currentG.indexOf("google") > -1){ //Google
-      liels = document.querySelectorAll("#res li");
-      if (!liels) liels = document.querySelectorAll("#ires li");
+      liels = document.querySelectorAll("#res li.g, #res div.srg div.g, #res #rso div.g, #res #isr_mc");
     } else {
       liels = document.querySelectorAll('div#results li, div#results > div.result, div#links > div.results_links_deep');
     }
     if (!liels) return;
   }
+  if (liels.length==0){
+    if (currentG.indexOf("google") > -1){ //Google
+      liels = document.querySelectorAll("#res li.g, #res div.srg div.g, #res #rso div.g, #res #isr_mc");
+    } else {
+      liels = document.querySelectorAll('div#results li, div#results > div.result, div#links > div.results_links_deep');
+    }
+  }
   if (liels.length == 0) return;
   if (liels.length == 1){if(liels[0].id == "isr_mc") liels = liels[0].querySelectorAll(".rg_di");} // Google Standard Image Results
-  //GM_log("LOG:liels.length="+liels.length); //DEBUG ONLY
-  //GM_log("LOG:liels[0].id="+liels[0].id); //DEBUG ONLY
   var hosts, hiders, nhider, i, j, k, hid, ael, ahref, dom, dompart, btn, apar, dgone, pban, linkwidth;
   hosts = blist; 
   for (i=0; i<liels.length; i++){
@@ -319,7 +328,9 @@ function hidehits(liels,ovrd){
         (currentG.indexOf("google") < 0 && liels[i].parentNode.nodeName == "DIV")) && 
         liels[i].className.indexOf("gbt")!=0 && 
         liels[i].className.indexOf("gplusgrid")<0 &&
-        liels[i].className.indexOf("mitem")<0) {
+        liels[i].className.indexOf("mitem")<0 &&
+        liels[i].className != "g mnr-c g-blk") {
+      liels[i].setAttribute("ghhresult","unset");
       hiders = liels[i].getElementsByClassName("ghhider");
       nhider = hiders.length;
       if (nhider == 0 || ovrd == true){ // skip if a button is there
@@ -470,7 +481,7 @@ function hidehits(liels,ovrd){
         }}}
       }
     } else { // Check for and handle Google standard image results - doesn't yet support BASIC image results
-      if (liels[i].className == "rg_di"){
+      if (liels[i].className.indexOf("rg_di")>-1){
         if (!liels[i].hasAttribute("imgblock")){ // skip if previously processed
           liels[i].setAttribute("imgblock", "normal");
           ael = liels[i].getElementsByTagName("a")[0];
@@ -511,6 +522,12 @@ function hidehits(liels,ovrd){
             }
           }}
         }
+        var imgshuffle = false;  // CHANGE TO TRUE TO TURN ON SHUFFLING (CURRENTLY BROKEN)
+        if (imgshuffle){
+          // Standard image results: move p-banned nodes to the end to maintain overall page length (otherwise, autoloading stops)
+          if (t_gimg) window.clearTimeout(t_gimg);
+          t_gimg = window.setTimeout(fixImagesLayout, 500);
+        }
       }
     }
   }
@@ -521,19 +538,36 @@ function hidehits(liels,ovrd){
     var invis = document.querySelectorAll("li[blockhidden]");
     if (invis.length >= 3) reQry("+-site:"+invis[0].getAttribute("blockhidden"));
   }
-  // Standard image results: remove perma-ban nodes and then prompt Google to redraw and renumber rows
+}
+function fixImagesLayout(){
+  // BUGGY: REPLACEMENT IMAGES DO NOT LOAD UNTIL YOU TRIGGER A REPAINT (e.g., open/close Find bar, resize window, zoom in then zoom out)
+  var madeamove = false;
+  var rgshes = document.querySelectorAll(".rgsh");
+  var lastdatapg = rgshes[rgshes.length-1].getAttribute("data-pg");
   var badimg = document.querySelectorAll('div[imgblock="pban"]');
   // TODO: Create setting to let user choose to remove regular blocks, too; temporary workaround: uncomment the following line:
   // var badimg = document.querySelectorAll('div[imgblock="pban"],div[imgblock="regular"]');
   if (badimg.length > 0){
-    for (bi=badimg.length; bi>0; bi--){
-      badimg[bi-1].remove();
+    for (bi=0; bi<badimg.length; bi++){
+      if (badimg[bi].hasAttribute("newdatapg")){ // already moved
+        if (badimg[bi].getAttribute("newdatapg") != lastdatapg){
+          document.getElementById("rg_s").appendChild(badimg[bi]);
+          badimg[bi].setAttribute("newdatapg", lastdatapg);
+          madeamove = true;
+        }
+      } else {  // first move
+        document.getElementById("rg_s").appendChild(badimg[bi]);
+        badimg[bi].setAttribute("newdatapg", lastdatapg);
+        madeamove = true;
+      }
     }
     // Trigger Google's function to re-layout the results neatly
-    var sctag = document.createElement("script");
-    sctag.setAttribute("type", "text/javascript");
-    sctag.appendChild(document.createTextNode("google.isr.layoutInit();"));
-    document.body.appendChild(sctag);
+    if (madeamove){
+      var sctag = document.createElement("script");
+      sctag.setAttribute("type", "text/javascript");
+      sctag.appendChild(document.createTextNode("google.isr.layoutInit();"));
+      document.body.appendChild(sctag);
+    }
   }
 }
 function replaceHit(sdomain,oa,oli,ddis){
@@ -634,11 +668,7 @@ function hidebasic(tbl){ // BASIC IMAGE RESULTS, BETA ONLY, NON-AJAX
 function reshow(e){   // Show hit without unblocking
   var liel, ael, dabs, k;
   liel = e.target.parentNode;
-  while ((currentG.indexOf("google") > -1 || currentG.indexOf("startpage") > -1) && liel.nodeName != "LI"){
-    liel=liel.parentNode;
-    if (liel.nodeName == "BODY") return;
-  }
-  while ((currentG.indexOf("google") < 0 && currentG.indexOf("startpage") < 0) && liel.nodeName != "DIV"){
+  while (!liel.hasAttribute("ghhresult")){
     liel=liel.parentNode;
     if (liel.nodeName == "BODY") return;
   }
@@ -728,20 +758,11 @@ function unblock(e){
   GM_setValue("hideyhosts",slist);
   blist = GM_getValue("hideyhosts");
   liel = elPar.parentNode;
-  while (currentG.indexOf("google") > -1 && liel.nodeName != "LI"){
+  while (!liel.hasAttribute("ghhresult")){
     liel=liel.parentNode;
     if (liel.nodeName == "BODY") break;
   }
-  if (currentG.indexOf("google") > -1 && liel.nodeName =="LI" && liel.className.indexOf("ghh1time")>-1){
-    liel.className = liel.className.replace(/\s*ghh1time/,"");
-    liel.removeChild(liel.getElementsByClassName("ghhd")[0]);
-    elPar.parentNode.removeChild(elPar);
-  }
-  while (currentG.indexOf("google") < 0 && liel.nodeName != "DIV"){
-    liel=liel.parentNode;
-    if (liel.nodeName == "BODY") break;
-  }
-  if (currentG.indexOf("google") < 0 && liel.nodeName =="DIV" && liel.className.indexOf("ghh1time")>-1){
+  if ((liel.nodeName =="LI" || liel.nodeName == "DIV") && liel.className.indexOf("ghh1time")>-1){
     liel.className = liel.className.replace(/\s*ghh1time/,"");
     liel.removeChild(liel.getElementsByClassName("ghhd")[0]);
     elPar.parentNode.removeChild(elPar);
@@ -763,18 +784,11 @@ function permban(e){
   GM_setValue("hideyhosts",slist);
   blist = GM_getValue("hideyhosts");
   liel = dpar.parentNode;
-  while (currentG.indexOf("google") > -1 && liel.nodeName != "LI"){
+  while (!liel.hasAttribute("ghhresult")){
     liel=liel.parentNode;
     if (liel.nodeName == "BODY") break;
   }
-  if (currentG.indexOf("google") > -1 && liel.nodeName == "LI" && liel.className.indexOf("ghh1time")>-1){
-    liel.className = liel.className.replace(/\s*ghh1time/,"");
-  }
-  while (currentG.indexOf("google") < 0 && liel.nodeName != "DIV"){
-    liel=liel.parentNode;
-    if (liel.nodeName == "BODY") break;
-  }
-  if (currentG.indexOf("google") < 0 && liel.nodeName == "DIV" && liel.className.indexOf("ghh1time")>-1){
+  if ((liel.nodeName =="LI" || liel.nodeName == "DIV") && liel.className.indexOf("ghh1time")>-1){
     liel.className = liel.className.replace(/\s*ghh1time/,"");
   }
   if(dpar.className.indexOf("ghhindent")>-1) dpar = dpar.parentNode;
@@ -789,11 +803,7 @@ function rehide(e){
   var dpar, liel, dompart, ael, j;
   dpar = e.target.parentNode;
   liel = dpar.parentNode;
-  while ((currentG.indexOf("google") > -1 || currentG.indexOf("startpage") > -1) && liel.nodeName != "LI"){
-    liel=liel.parentNode;
-    if (liel.nodeName == "BODY") break;
-  }
-  while ((currentG.indexOf("google") < 0 && currentG.indexOf("startpage") < 0) && liel.nodeName != "DIV"){
+  while (!liel.hasAttribute("ghhresult")){
     liel=liel.parentNode;
     if (liel.nodeName == "BODY") break;
   }
@@ -1079,7 +1089,7 @@ function addManageForm(){
     "for regular blocked hits\"><input type=\"checkbox\" name=\"chkshownotc\" id=\"chkshownotc\"> Show hidden hit notices</label><br>" +
     "<label title=\"Switch between block dialog and one-click blocking\"><input type=\"checkbox\" name=\"chk1click\" " +
     "id=\"chk1click\"> Enable 1-click blocking</label></p>" +
-    "<p style=\"border-top:1px solid #000; padding:0.25em;margin:0.25em\">v1.6.5 &copy; 2014 Jefferson Scher. Learn more on " +
+    "<p style=\"border-top:1px solid #000; padding:0.25em;margin:0.25em\">v1.6.9 &copy; 2015 Jefferson Scher. Learn more on " +
     "<a href=\"" + script_about + "\">this script's page</a>.</p></div></div>" +
     "<div id=\"ghhmt2\" style=\"display:none\"><p>Click to remove from regular block list:</p>" +
     "<div class=\"ghhtab\"><ul id=\"ghhsitelist\"></ul></div></div>\n" +
@@ -2050,6 +2060,7 @@ function toggleBlockHiders(str){
 }
 function refreshListeners(e){ // for AutoPager extension
   var bbtns, bnotc, i, j;
+  if (!document.getElementById("navcnt")) return;
   bbtns = document.getElementById("navcnt").querySelectorAll(".ghhb");
   for (i=0;i<bbtns.length;i++){
     bbtns[i].removeEventListener("click",showbfd,true);
@@ -2149,7 +2160,7 @@ function reQuery(e){
         break;
       }
     }
-  } else GM_log("LOG:reQuery fail: no rads");
+  } else console.log("LOG:reQuery fail: no rads");
 }
 function reQry(d){
   if (!d) return;
@@ -2173,7 +2184,7 @@ function reQry(d){
     }
   }
   if (has_q) window.location.href = window.location.href.substr(0, window.location.href.indexOf("?")+1) + qa.join("&");
-  else GM_log("LOG:Unable to add new search term to URL");
+  else console.log("LOG:Unable to add new search term to URL");
 }
 function toggleciteline(posit) {
   var ghhbd_sty = document.getElementById("bbposciteline");
