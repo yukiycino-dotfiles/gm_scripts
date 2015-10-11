@@ -44,7 +44,7 @@
 		<Grant>none</Grant>
 		<Include>*</Include>
 	</Script>
-	<Script basedir="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites)" checkRemoteUpdates="1" dependhash="9d35f9617a4d71c9615e4925bca3371e9cae91be" description="Block unwanted sites from your Google, DuckDuckGo and Startpage.com search results. For Firefox+Greasemonkey or Chrome+Tampermonkey. v1.6.9 2015-09-13" enabled="true" noframes="false" filename="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites).user.js" installTime="1442881186000" modified="1442881186000" name="Google Hit Hider by Domain (Search Filter / Block Sites)" namespace="JeffersonScher" runAt="document-end" updateMetaStatus="ok" uuid="14595697-e54d-cb46-aa02-3368ccc28b35" version="1.6.9" installurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js" updateurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js">
+	<Script basedir="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites)" checkRemoteUpdates="1" dependhash="2f9d4b8e3e6f4abd6c0bc55f0e10d3b53dd26773" description="Block unwanted sites from your Google, DuckDuckGo, Startpage.com, Bing and Yahoo search results. For Firefox+Greasemonkey or Chrome+Tampermonkey. v1.7.0 2015-10-06" enabled="true" noframes="false" filename="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites).user.js" installTime="1444224963000" modified="1444224963000" name="Google Hit Hider by Domain (Search Filter / Block Sites)" namespace="JeffersonScher" runAt="document-end" updateMetaStatus="ok" uuid="b6ac5fcd-46a5-2849-a3ea-65b764eee639" version="1.7.0" installurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js" updateurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js">
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_getValue</Grant>
 		<Grant>GM_setValue</Grant>
@@ -59,7 +59,10 @@
 		<Include>http*://startpage.com/*</Include>
 		<Include>http*://*.startpage.com/*</Include>
 		<Include>http*://duckduckgo.com/*</Include>
-		<Resource name="mycon" filename="gfrk-GHHbD-ver169.png" mimetype="image/png"/>
+		<Include>http*://www.bing.com/*</Include>
+		<Include>http*://*search.yahoo.com/*</Include>
+		<Include>http*://search.yahoo.co.jp/*</Include>
+		<Resource name="mycon" filename="gfrk-GHHbD-ver170.png" mimetype="image/png"/>
 	</Script>
 	<Script basedir="AutoPagerize" checkRemoteUpdates="1" dependhash="1ed5200bbbb9857d51e432b3d367af6967a3c1f3" description="loading next page and inserting into current page." enabled="true" noframes="false" filename="8551.user.js" installTime="1439445511000" modified="1439445511000" name="AutoPagerize" namespace="http://swdyh.yu.to/" runAt="document-end" updateMetaStatus="unknown" uuid="f66a28b5-a272-1b49-81e0-84ae293e0d12" version="0.0.66" installurl="http://userscripts-mirror.org/scripts/source/8551.user.js" updateurl="https://userscripts.org/scripts/source/8551.user.js" icon="icon_032.png">
 		<Exclude>https://mail.google.com/*</Exclude>
@@ -75,9 +78,5 @@
 		<Include>http://*</Include>
 		<Include>https://*</Include>
 		<UserExclude>http://matome.naver.jp/*</UserExclude>
-	</Script>
-	<Script basedir="DeleteTweet" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" noframes="false" filename="DeleteTweet.user.js" installTime="1444011402000" modified="1444014575000" name="DeleteTweet" namespace="dionore" runAt="document-end" updateMetaStatus="unknown" uuid="33ebce94-ed81-6b44-a15c-6c4815635d3e" version="1" installurl="file:///Users/dionore/Library/Application%20Support/Firefox/Profiles/gcecnxgy.restore/gm_scripts/DeleteTweet/DeleteTweet.user.js" updateurl="file:///Users/dionore/Library/Application%20Support/Firefox/Profiles/gcecnxgy.restore/gm_scripts/DeleteTweet/DeleteTweet.user.js">
-		<Grant>none</Grant>
-		<Include>https://twitter.com/dionore/statuses/*</Include>
 	</Script>
 </UserScriptConfig>

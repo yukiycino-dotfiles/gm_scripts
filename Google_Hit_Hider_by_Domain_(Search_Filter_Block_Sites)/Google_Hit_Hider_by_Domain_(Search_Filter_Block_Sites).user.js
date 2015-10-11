@@ -2,10 +2,10 @@
 // @name        Google Hit Hider by Domain (Search Filter / Block Sites)
 // @author      Jefferson "jscher2000" Scher
 // @namespace   JeffersonScher
-// @version     1.6.9
+// @version     1.7.0
 // @copyright   Copyright 2015 Jefferson Scher
 // @license     BSD with restriction
-// @description Block unwanted sites from your Google, DuckDuckGo and Startpage.com search results. For Firefox+Greasemonkey or Chrome+Tampermonkey. v1.6.9 2015-09-13
+// @description Block unwanted sites from your Google, DuckDuckGo, Startpage.com, Bing and Yahoo search results. For Firefox+Greasemonkey or Chrome+Tampermonkey. v1.7.0 2015-10-06
 // @include     http*://www.google.*/*
 // @include     http*://news.google.*/*
 // @include     http*://images.google.*/*
@@ -14,13 +14,16 @@
 // @include     http*://startpage.com/*
 // @include     http*://*.startpage.com/*
 // @include     http*://duckduckgo.com/*
+// @include     http*://www.bing.com/*
+// @include     http*://*search.yahoo.com/*
+// @include     http*://search.yahoo.co.jp/*
 // @grant       GM_addStyle
 // @grant       GM_getValue
 // @grant       GM_setValue
 // @grant       GM_registerMenuCommand
 // @grant       GM_deleteValue
 // @grant       GM_xmlhttpRequest
-// @resource    mycon http://www.jeffersonscher.com/gm/src/gfrk-GHHbD-ver169.png
+// @resource    mycon http://www.jeffersonscher.com/gm/src/gfrk-GHHbD-ver170.png
 // ==/UserScript==
 var script_about = "https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites";
 /*
@@ -43,6 +46,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 Google: div#res > div#search > div > div#ires > div.srg | ol#rso > div.g > div.rc > h3.r > a
 Startpage: div#results > ol > li > div.result > h3 > a
 DuckDuckGo: div#links > div.results_links_deep > div.links_main > h2 > a
+Bing: div#b_content > ol#b-results > li.b_algo > h2 > a
+Yahoo (Firefox): div#results > div#cols > div#left > div > div#main > div > div#web > ol > li > div > div > h3 > a
+Yahoo Japan: div#contents > div > div > div > div#WS2m > div.w > div.hd > h3 > a
 Google in-depth articles: div#res > div#search > div#ires > ol#rso > div > li.g.card-section or li.g.ct-cs > div.rc > div > h3.r > a
 Google Images (default): div#res > div#search > div > div#ires > div#rso > div#isr_mc > div > div#rg > div#rg_s > div.rg_di.rg_el.ivg-ig > a > img
 */
@@ -59,11 +65,11 @@ GM_addStyle("div.ghhider{color:#888;} div.ghhider:hover{background-color:#eee;} 
   ".ghhdel{text-decoration:line-through;color:#333;} .ghhpb{text-decoration:none;color:#f00;} " +
   ".ghhblk{text-decoration:none;color:#333;} .ghhd{position:relative;line-height:1.2em;cursor:pointer;} " + 
   ".ghhindent{position:absolute;left:350px;top:-3px;} #btnedit p{margin:2px 4px 4px 4px;} #ghhblockform input[type='radio'], #ghhmngform input[type='radio']{vertical-align:bottom;margin-top:5px;margin-bottom:1px} " +
-  ".ghhtbl{border:1px solid black;border-collapse:collapse} .ghhtbl td, .ghhtbl th{border:1px solid black;padding:2px 4px;} " +
+  "#ghhblockform label, #ghhmngform label{display:inline;font-weight:normal} .ghhtbl{border:1px solid black;border-collapse:collapse} .ghhtbl td, .ghhtbl th{border:1px solid black;padding:2px 4px;} " +
   "#ghhtsdiv{margin:0 -1.5em;padding:0 3px 0 8px;border-bottom:1px solid #ccc;} #ghhtstrip{padding-bottom:0;} " +
   "#ghhtstrip button{color:#555;background-color:#f5f5f5;margin:0 2px 0 0;border:1px solid #ccc;padding:1px 2px;height:22px;border-radius:2px;-moz-border-radius:2px;} " +
   "#ghhtstrip .ghhCurTab{background-color:#fcfcfc;border-bottom-color:#fcfcfc;} .ghhtab {margin-top:1em;height:17em;overflow-y:scroll;border:1px solid #333;} " +
-  "#mflists>div>p{margin:1em 0;} #ghhmngform{position:fixed;top:90px;right:0;z-index:1001;}");
+  "#mflists>div>p{margin:1em 0;} #ghhmngform{position:fixed;top:65px;right:0;z-index:3001;text-align:left} #ghhblockform{text-align:left;z-index:3005}");
 GM_addStyle("@media print {button.ghhider{display:none;}}");
 
 // Standard image results style block
@@ -76,6 +82,15 @@ if (location.search.indexOf("tbm=isch") > -1){
   var isch=true;
 } else var isch=false;
 
+var currentG;
+if (location.host.indexOf("google.") > -1) currentG = location.host.substr(location.host.indexOf("google."));
+else currentG = location.hostname;
+if (currentG.indexOf("duckduckgo") > -1) GM_addStyle(".links_main,.result__title{overflow:visible !important;} .ghhb{font-size:12px!important;margin-left:4px!important;}");
+if (currentG.indexOf("startpage") > -1) GM_addStyle(".ghhd{padding:0 10px 8px 12px} h3 button.ghhider{font-size:0.8em !important;}");
+if (currentG.indexOf("bing.com") > -1) GM_addStyle("li[ghhresult] h2 button.ghhider{font-size:0.7em !important;}");
+if (currentG.indexOf("yahoo.com") > -1) GM_addStyle("div#web > ol.reg, li div.compTitle {overflow:visible !important;} .ghhd{margin: 1em 0px -1em 10px} #ghhmngform{top:80px}");
+if (currentG.indexOf("yahoo.co.jp") > -1) GM_addStyle("#WS2m .w{overflow:visible !important;} #ghhmngform{z-index:3001}");
+
 // Style override example: .ghhd{font-size:0.8em;text-decoration:line-through;}
 var custSty = GM_getValue("hiderStyles");
 if (!custSty || custSty.length == 0){
@@ -87,11 +102,6 @@ ghhbd_custsty.setAttribute("type", "text/css");
 ghhbd_custsty.id = "ghhbdcuststy";
 ghhbd_custsty.appendChild(document.createTextNode(custSty));
 document.body.appendChild(ghhbd_custsty);
-
-var currentG;
-if (location.host.indexOf("google.") > -1) currentG = location.host.substr(location.host.indexOf("google."));
-else currentG = location.hostname;
-if (currentG.indexOf("duckduckgo") > -1) GM_addStyle(".links_main,.result__title{overflow:visible !important;} .ghhb{font-size:12px!important;margin-left:4px!important;} .result__a{display:inline!important;}");
 
 // == == == Globals for preferences == == ==
 var blist, defaultTxts, txtsPref, txts, defaultPrefs, ghhPrefs, ghhPrefO, showYN, mpopen, mbstyle, bbstyle, bbpos, addAt, listchgs, bLUopen, bAggress, bAJAX, bMutOb, pref1click, betatest, MutOb, chgMon, opts, kids;
@@ -164,16 +174,16 @@ mpopen = ghhPrefO.mngpaneopen[0];
 mbstyle = ghhPrefO.mngbtnstyle[0];
 if (mbstyle.split("-")[0] == "mng") toggleBlockHiders("H");
 if (mbstyle.split("-").length < 3){
-  GM_addStyle("#ghhMngBtn {position:fixed;top:200px;right:-2.8em;-moz-transform:rotate(-90deg);"+
-    "border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0;-moz-border-radius-bottomleft:0;-moz-border-radius-bottomright:0;padding:6px 0 6px 0;z-index:100;}");
+  GM_addStyle("#ghhMngBtn {position:fixed;top:150px;right:-2.8em;-moz-transform:rotate(-90deg);"+
+    "border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0;-moz-border-radius-bottomleft:0;-moz-border-radius-bottomright:0;padding:6px 0 6px 0;z-index:1000;}");
 } else {
   switch (mbstyle.split("-")[2]){
     case "B":
       GM_addStyle("#ghhMngBtn {position:fixed;bottom:0;right:2px;"+
-        "border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0;-moz-border-radius-bottomleft:0;-moz-border-radius-bottomright:0;padding:6px 0 6px 0;z-index:100;}");
+        "border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0;-moz-border-radius-bottomleft:0;-moz-border-radius-bottomright:0;padding:6px 0 6px 0;z-index:1000;}");
       break;
     case "T":
-      GM_addStyle("#ghhMngBtn {margin:0;padding:4px 6px;z-index:1001;}");
+      GM_addStyle("#ghhMngBtn {margin:0;padding:4px 6px;z-index:3000;}");
       if (document.querySelector("#appbar ol")){
         window.setTimeout(function(){document.querySelector("#appbar ol#ab_ctls").appendChild(document.getElementById("ghhMngBtn"))}, 1000);
         window.setTimeout(function(){var liNew = document.createElement("li");liNew.className="ab_ctl";liNew.appendChild(document.getElementById("ghhMngBtn"));document.querySelector("ol#ab_ctls").appendChild(liNew);}, 1500);
@@ -182,8 +192,8 @@ if (mbstyle.split("-").length < 3){
       }
       break;
     default:
-      GM_addStyle("#ghhMngBtn {position:fixed;top:200px;right:-2.8em;-moz-transform:rotate(-90deg);-webkit-transform:rotate(-90deg);"+
-        "border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0;-moz-border-radius-bottomleft:0;-moz-border-radius-bottomright:0;padding:6px 0 6px 0;z-index:100;}");
+      GM_addStyle("#ghhMngBtn {position:fixed;top:150px;right:-2.8em;-moz-transform:rotate(-90deg);-webkit-transform:rotate(-90deg);"+
+        "border-bottom:0;border-bottom-left-radius:0;border-bottom-right-radius:0;-moz-border-radius-bottomleft:0;-moz-border-radius-bottomright:0;padding:6px 0 6px 0;z-index:1000;}");
   }
 }
 if (mbstyle.split("-").length > 3) bbstyle = mbstyle.split("-")[3];
@@ -298,22 +308,34 @@ function checkNode(el){
   if (nlist.length > 0){
     hidehits(nlist,false);
     if (document.getElementById("GTR")) removePBs();
+  } else {
+    if (el.nodeName == "DIV" && el.className == "irc_c") {
+      var buttondivs = el.querySelectorAll('.irc_butc');
+      for (var k=0; k<buttondivs.length; k++){
+        buttondivs[k].setAttribute("ghhresult", "image-unset");
+        buttondivs[k].style.position = "relative";
+        var tdnew = document.createElement("td");
+        tdnew.innerHTML = '<button title="Block/Unblock" class="irc_but"><span class="irc_but_t">GHHbD</span></button>';
+        buttondivs[k].querySelector('tr').appendChild(tdnew);
+        tdnew.firstChild.addEventListener("click", imgblockdialog, false);
+      }
+    }
   }
 }
 function hidehits(liels,ovrd){
   if (!liels){
     if (currentG.indexOf("google") > -1){ //Google
-      liels = document.querySelectorAll("#res li.g, #res div.srg div.g, #res #rso div.g, #res #isr_mc");
+      liels = document.querySelectorAll("#res li.g, #res div.srg div.g, #res #rso div.g, #res #GTR div.g, #res #isr_mc");
     } else {
-      liels = document.querySelectorAll('div#results li, div#results > div.result, div#links > div.results_links_deep');
+      liels = document.querySelectorAll('div#results li, div#results > div.result, div#links > div.results_links_deep, div#b_content > ol > li.b_algo, div#results div#web > ol > li, div#WS2m > div.w');
     }
     if (!liels) return;
   }
   if (liels.length==0){
     if (currentG.indexOf("google") > -1){ //Google
-      liels = document.querySelectorAll("#res li.g, #res div.srg div.g, #res #rso div.g, #res #isr_mc");
+      liels = document.querySelectorAll("#res li.g, #res div.srg div.g, #res #rso div.g, #res #GTR div.g, #res #isr_mc");
     } else {
-      liels = document.querySelectorAll('div#results li, div#results > div.result, div#links > div.results_links_deep');
+      liels = document.querySelectorAll('div#results li, div#results > div.result, div#links > div.results_links_deep, div#b_content > ol > li.b_algo, div#results div#web > ol > li, div#WS2m > div.w');
     }
   }
   if (liels.length == 0) return;
@@ -344,6 +366,8 @@ function hidehits(liels,ovrd){
           dom = ahref.substr(ahref.indexOf("http"));
           if (ael.hasAttribute("data-href")) dom = ael.getAttribute("data-href").substr(ael.getAttribute("data-href").indexOf("http"));
           if (dom.indexOf(currentG+"/aclk?")>-1) dom = ahref.substr(ahref.indexOf("http", 10));
+          if (dom.indexOf("r.search.yahoo.com/_ylt=")>-1) dom = decodeURIComponent(ahref.substr(ahref.indexOf("RU=http")+3));
+          if (dom.indexOf("search.yahoo.co.jp/r/FOR=")>-1) dom = decodeURIComponent(ahref.substr(ahref.indexOf("/**http")+3));
           // if (dom.indexOf("imgrefurl")>-1) dom = dom.match(/imgrefurl=([^&]+)/)[1];
           dom = dom.split("/")[2];
           if (dom.indexOf(":")> -1) dom = dom.substr(0,dom.indexOf(":")); // Strip port number
@@ -482,7 +506,7 @@ function hidehits(liels,ovrd){
       }
     } else { // Check for and handle Google standard image results - doesn't yet support BASIC image results
       if (liels[i].className.indexOf("rg_di")>-1){
-        if (!liels[i].hasAttribute("imgblock")){ // skip if previously processed
+        if (!liels[i].hasAttribute("imgblock") || ovrd == true){ // skip if previously processed
           liels[i].setAttribute("imgblock", "normal");
           ael = liels[i].getElementsByTagName("a")[0];
           if (ael){if(ael.hasAttribute("href")){
@@ -794,6 +818,7 @@ function permban(e){
   if(dpar.className.indexOf("ghhindent")>-1) dpar = dpar.parentNode;
   dpar.parentNode.removeChild(dpar);
   hidehits(null,true);
+  if (document.getElementById("GTR")) removePBs();
   if (document.getElementById("ghhmngform")){
     if(document.getElementById("ghhmngform").style.display=="block") refreshSiteList();
   }
@@ -826,7 +851,6 @@ function addBlockForm(){
   var bfd = document.createElement("div");
   bfd.id = "ghhblockform";
   bfd.className = "ghhpane";
-  bfd.setAttribute("style","z-index:105;")
   var bfdcode = "<form onsubmit=\"return false;\"><p style=\"margin:0.75em 0;\"><strong>Add to blocklist:</strong></p><p><label " +
     "style=\"white-space:pre\"><input type=\"radio\" name=\"ghhdom\" value=\"f\"> <span id=\"ghhfulldom\"></span></label><br>" +
     "<label><input type=\"radio\" name=\"ghhdom\" value=\"p\"> <span id=\"ghhpartdom\"></span></label></p>" +
@@ -889,24 +913,32 @@ function showbfd(e) {
     tdiv = document.createElement("div");
     tdiv.id = "ghhtemp";
   }
-  lt = bbtn.offsetLeft + bbtn.offsetWidth + 12;
-  if (bbtn.parentNode.previousElementSibling){
-    if (window.getComputedStyle(bbtn.parentNode.previousElementSibling,null).getPropertyValue("float") != "none" ||
-        (bbtn.style.position == "absolute" && bbtn.parentNode.nodeName == "TD")) lt=lt-bbtn.parentNode.offsetLeft;
-  }
-  if (currentG.indexOf("google") < 0) lt=lt-bbtn.parentNode.offsetLeft;
-  tdiv.setAttribute("style", "position:relative;left:" +  lt + "px;top:-65px;z-index:100;width:250px;");
-  if (bbtn.nextElementSibling){
-    if (bbtn.nextElementSibling.nodeName == "DIV") bbtn.parentNode.insertBefore(tdiv,bbtn.nextElementSibling);
+  if (isch == true){
+    tdiv.setAttribute("style", "position:absolute;left:-80px;top:0;z-index:3000;width:250px;");
+    bbtn.parentNode.appendChild(tdiv);
+  } else {
+    lt = bbtn.offsetLeft + bbtn.offsetWidth + 12;
+    if (bbtn.parentNode.previousElementSibling){
+      if (window.getComputedStyle(bbtn.parentNode.previousElementSibling,null).getPropertyValue("float") != "none" ||
+          (bbtn.style.position == "absolute" && bbtn.parentNode.nodeName == "TD")) lt=lt-bbtn.parentNode.offsetLeft;
+    }
+    if (document.querySelector('table#GTR')){
+      lt-=230;
+    }
+    if (currentG.indexOf("google") < 0) lt=lt-bbtn.parentNode.offsetLeft;
+    tdiv.setAttribute("style", "position:relative;left:" +  lt + "px;top:-65px;z-index:500;width:250px;");
+    if (bbtn.nextElementSibling){
+      if (bbtn.nextElementSibling.nodeName == "DIV") bbtn.parentNode.insertBefore(tdiv,bbtn.nextElementSibling);
+      else bbtn.parentNode.appendChild(tdiv);
+    }
     else bbtn.parentNode.appendChild(tdiv);
   }
-  else bbtn.parentNode.appendChild(tdiv);
   tdiv.appendChild(bfdiv);
   if (tdiv.parentNode.style.overflowX == "hidden" || tdiv.parentNode.style.overflowY == "hidden"){
     tdiv.parentNode.style.overflowX = "visible";
     tdiv.parentNode.style.overflowY = "visible";
   }
-  if (pref1click.substr(0,1) == "Y" && e.shiftKey != true){ // 1-click; hold Shift to override
+  if (pref1click.substr(0,1) == "Y" && e.shiftKey != true  && isch != true){ // 1-click; hold Shift to override
     if (pref1click.substr(2,1) == "N"){
       document.getElementById("ghhbf1").click();
     } else {
@@ -952,6 +984,7 @@ function addblock(e){
   else blist = "|" + sdom + ":" + btype + blist;
   GM_setValue("hideyhosts",blist);
   hidehits(null,true);
+  if (document.getElementById("GTR")) removePBs();
   if (addAt == "sort") sortlist(null);
   if (document.getElementById("ghhmngform")){
     if(document.getElementById("ghhmngform").style.display=="block") refreshSiteList();
@@ -990,6 +1023,29 @@ function ghhcloseform(e){
     }      
   }
   e.stopPropagation();
+}
+function imgblockdialog(e){
+  var viewer = e.target.parentNode;
+    while (!viewer.hasAttribute("ghhresult")){
+    viewer=viewer.parentNode;
+    if (viewer.nodeName == "BODY") return;
+  }
+  var ameta = viewer.previousElementSibling.querySelector('._r3 a').textContent.trim();
+  e.target.setAttribute("meta", ameta);
+  if (blist.indexOf("|"+ameta+":") > -1){
+    if (confirm("Unblock?")){
+      var slist = GM_getValue("hideyhosts");
+      if (slist.substr(0,1) != "|") slist = "|" + slist;
+      slist = slist.replace("|"+ameta+":t","").replace("|"+ameta+":p","");
+      GM_setValue("hideyhosts",slist);
+      blist = GM_getValue("hideyhosts");
+      hidehits(null,true);
+      if (document.getElementById("ghhmngform")){
+        if(document.getElementById("ghhmngform").style.display=="block") refreshSiteList();
+      }
+    }
+    e.stopPropagation();
+  } else showbfd(e);
 }
 // Functions relating to the Manage Hiding button
 function addMngBtn(){
@@ -1089,7 +1145,7 @@ function addManageForm(){
     "for regular blocked hits\"><input type=\"checkbox\" name=\"chkshownotc\" id=\"chkshownotc\"> Show hidden hit notices</label><br>" +
     "<label title=\"Switch between block dialog and one-click blocking\"><input type=\"checkbox\" name=\"chk1click\" " +
     "id=\"chk1click\"> Enable 1-click blocking</label></p>" +
-    "<p style=\"border-top:1px solid #000; padding:0.25em;margin:0.25em\">v1.6.9 &copy; 2015 Jefferson Scher. Learn more on " +
+    "<p style=\"border-top:1px solid #000; padding:0.25em;margin:0.25em\">v1.7.0 &copy; 2015 Jefferson Scher. Learn more on " +
     "<a href=\"" + script_about + "\">this script's page</a>.</p></div></div>" +
     "<div id=\"ghhmt2\" style=\"display:none\"><p>Click to remove from regular block list:</p>" +
     "<div class=\"ghhtab\"><ul id=\"ghhsitelist\"></ul></div></div>\n" +
@@ -2245,14 +2301,14 @@ function closeCustomStyleBar(e){
 }
 function removePBs(e){ // GoogleMonkeyR layout only
   // Schedule Permaban removal (prevent simultaneous/conflicting runs)
-  var PBsBlanks = document.querySelectorAll("table#GTR li[blockhidden], table#GTR td:empty");
+  var PBsBlanks = document.querySelectorAll("table#GTR li[blockhidden], table#GTR div.g[blockhidden], table#GTR td:empty");
   if (PBsBlanks.length < 1) return;
   if (t_pb) window.clearTimeout(t_pb);
   t_pb = window.setTimeout(GMRshuffle, 100);
 }
 function GMRshuffle(){ // GoogleMonkeyR layout only
   // Delete Permaban hits
-  var PBs = document.querySelectorAll("table#GTR li[blockhidden]");
+  var PBs = document.querySelectorAll("table#GTR li[blockhidden], table#GTR div.g[blockhidden]");
   if (PBs.length > 0){
     for (var i=PBs.length; i>0; i--) PBs[i-1].remove();
   }
