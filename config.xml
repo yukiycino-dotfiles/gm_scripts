@@ -30,7 +30,24 @@
 		<Include>http://www.amazon.jp/*</Include>
 		<Include>http://amazon.jp/*</Include>
 	</Script>
+<<<<<<< HEAD
 	<Script author="Tatsuo Ikeda &lt;jp.ne.co.jp at gmail&gt; http://about.me/ikeikeikeike" basedir="social-bookmark-counter-on-google-search" checkRemoteUpdates="1" dependhash="19ddcdd622a468161879e765c56b4e5d93baa5d1" description="Script Summary: Supporting Delicious, Facebook, Twitter, Hatena, Digg and StumbleUpon." enabled="true" filename="115527.user.js" installTime="1400987492000" modified="1444572165000" name="social-bookmark-counter-on-google-search" namespace="https://github.com/ikeikeikeike" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="bd7586bb-3c23-ec44-9922-8dc8b198b8e0" version="0.9.1" installurl="https://userscripts.org/scripts/source/115527.user.js" updateurl="https://userscripts.org/scripts/source/115527.meta.js">
+=======
+	<Script basedir="nicovideononindication" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="" enabled="true" noframes="false" filename="nicovideononindication.user.js" installTime="1335529367766" modified="1438252633000" name="NicovideoNonIndication" namespace="http://d.hatena.ne.jp/dionore/" runAt="document-end" updateMetaStatus="unknown" uuid="ed0741fb-7a4d-de49-b1f2-2f31c6e9be37" version="null" installurl="null" updateurl="null">
+		<Grant>none</Grant>
+		<Include>http://www.nicovideo.jp/watch/*</Include>
+	</Script>
+	<Script basedir="EndTime2" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Toodledoの見積もり時間をリアルタイムに表示する" enabled="true" noframes="false" filename="endtime2.user.js" installTime="1338774456722" modified="1438252633000" name="EndTime2" namespace="http://blog.toodledotips.jp/?p=206" runAt="document-end" updateMetaStatus="unknown" uuid="9fddb5aa-61cd-ea42-844c-b350a2c51501" version="null" installurl="file:///Users/dionore/Dropbox/endtime2.user.js" updateurl="file:///Users/dionore/Dropbox/endtime2.user.js">
+		<Grant>none</Grant>
+		<Include>http://www.toodledo.com/tasks/*</Include>
+	</Script>
+	<Script basedir="ToodleChute" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Toodledoでタスクシュートしたくなるツール" enabled="true" noframes="false" filename="toodle_chute.min.user.js" installTime="1354339578764" modified="1438252633000" name="ToodleChute" namespace="https://github.com/nettabo/toodlechute" runAt="document-end" updateMetaStatus="fail" uuid="b71b7d9e-d403-3144-bd5e-a812c189c107" version="0.1.5" installurl="https://github.com/nettabo/toodlechute/raw/master/toodle_chute.min.user.js" updateurl="https://github.com/nettabo/toodlechute/raw/master/toodle_chute.min.user.js">
+		<Grant>none</Grant>
+		<Include>http://www.toodledo.com/tasks/index.php*</Include>
+		<Include>https://www.toodledo.com/tasks/index.php*</Include>
+	</Script>
+	<Script basedir="social-bookmark-counter-on-google-search" checkRemoteUpdates="1" dependhash="19ddcdd622a468161879e765c56b4e5d93baa5d1" description="Script Summary: Supporting Delicious, Facebook, Twitter, Hatena, Digg and StumbleUpon." enabled="true" noframes="false" filename="115527.user.js" installTime="1400987492000" modified="1442776787000" name="social-bookmark-counter-on-google-search" namespace="https://github.com/ikeikeikeike" runAt="document-end" updateMetaStatus="unknown" uuid="bd7586bb-3c23-ec44-9922-8dc8b198b8e0" version="0.9.1" installurl="https://userscripts.org/scripts/source/115527.user.js" updateurl="https://userscripts.org/scripts/source/115527.meta.js">
+>>>>>>> parent of 772394c... social-bookmark-counter-on-google-searchを標準の表示に戻した
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_xmlhttpRequest</Grant>
 		<Include>http://www.google.*/search*</Include>
@@ -44,12 +61,17 @@
 		<Grant>none</Grant>
 		<Include>*</Include>
 	</Script>
+<<<<<<< HEAD
 	<Script author="Jefferson &quot;jscher2000&quot; Scher" basedir="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites)" checkRemoteUpdates="1" dependhash="2f9d4b8e3e6f4abd6c0bc55f0e10d3b53dd26773" description="Block unwanted sites from your Google, DuckDuckGo, Startpage.com, Bing and Yahoo search results. For Firefox+Greasemonkey or Chrome+Tampermonkey. v1.7.0 2015-10-06" enabled="true" filename="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites).user.js" installTime="1444224963000" modified="1444572165000" name="Google Hit Hider by Domain (Search Filter / Block Sites)" namespace="JeffersonScher" noframes="false" runAt="document-end" updateMetaStatus="ok" uuid="b6ac5fcd-46a5-2849-a3ea-65b764eee639" version="1.7.0" installurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js" updateurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js">
+=======
+	<Script basedir="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites)" checkRemoteUpdates="1" dependhash="c59285498a357acdb5329208c5c428b007a06162" description="Block unwanted sites from your Google, DuckDuckGo and Startpage.com search results. For Firefox+Greasemonkey or Chrome+Tampermonkey. v1.6.5 2014-12-26" enabled="true" noframes="false" filename="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites).user.js" installTime="1428196486000" modified="1438252633000" name="Google Hit Hider by Domain (Search Filter / Block Sites)" namespace="JeffersonScher" runAt="document-end" updateMetaStatus="ok" uuid="7a9d262e-ecf6-044c-a2fa-957921c99104" version="1.6.5" installurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js" updateurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js">
+>>>>>>> parent of 772394c... social-bookmark-counter-on-google-searchを標準の表示に戻した
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_getValue</Grant>
 		<Grant>GM_setValue</Grant>
 		<Grant>GM_registerMenuCommand</Grant>
 		<Grant>GM_deleteValue</Grant>
+		<Grant>GM_log</Grant>
 		<Grant>GM_xmlhttpRequest</Grant>
 		<Include>http*://www.google.*/*</Include>
 		<Include>http*://news.google.*/*</Include>
@@ -59,10 +81,14 @@
 		<Include>http*://startpage.com/*</Include>
 		<Include>http*://*.startpage.com/*</Include>
 		<Include>http*://duckduckgo.com/*</Include>
+<<<<<<< HEAD
 		<Include>http*://www.bing.com/*</Include>
 		<Include>http*://*search.yahoo.com/*</Include>
 		<Include>http*://search.yahoo.co.jp/*</Include>
 		<Resource name="mycon" filename="gfrk-GHHbD-ver170.png" mimetype="image/png"/>
+=======
+		<Resource name="mycon" filename="gfrk-GHHbD-ver165.png" mimetype="image/png"/>
+>>>>>>> parent of 772394c... social-bookmark-counter-on-google-searchを標準の表示に戻した
 	</Script>
 	<Script basedir="AutoPagerize" checkRemoteUpdates="1" dependhash="1ed5200bbbb9857d51e432b3d367af6967a3c1f3" description="loading next page and inserting into current page." enabled="true" filename="8551.user.js" installTime="1439445511000" modified="1444572165000" name="AutoPagerize" namespace="http://swdyh.yu.to/" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="f66a28b5-a272-1b49-81e0-84ae293e0d12" version="0.0.66" installurl="http://userscripts-mirror.org/scripts/source/8551.user.js" updateurl="https://userscripts.org/scripts/source/8551.user.js" icon="icon_032.png">
 		<Exclude>https://mail.google.com/*</Exclude>
@@ -77,7 +103,6 @@
 		<Grant>GM_registerMenuCommand</Grant>
 		<Include>http://*</Include>
 		<Include>https://*</Include>
-		<UserExclude>http://matome.naver.jp/*</UserExclude>
 	</Script>
 	<Script basedir="Google_Search_AJAX_Killer" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="auto redirect to the non-AJAX URL." enabled="true" filename="101838.user.js" installTime="1445778985000" modified="1445778985000" name="Google Search AJAX Killer" namespace="userscripts-mirror.org" noframes="false" runAt="document-end" updateMetaStatus="fail" uuid="67eb0ea5-6a49-ab40-a3b3-c4fc8b5e2e7d" version="1.0" installurl="http://userscripts-mirror.org/scripts/source/101838.user.js" updateurl="http://userscripts-mirror.org/scripts/source/101838.user.js">
 		<Grant>none</Grant>
