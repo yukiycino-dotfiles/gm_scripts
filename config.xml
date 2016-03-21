@@ -1,5 +1,5 @@
 <UserScriptConfig>
-	<Script basedir="Minibuffer" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Minibuffer" enabled="true" noframes="false" filename="minibuffer.user.js" installTime="1354076029683" modified="1443522750000" name="Minibuffer" namespace="http://white.s151.xrea.com/" runAt="document-end" updateMetaStatus="fail" uuid="e525ce7a-ade0-244e-8526-94a2e3c51742" version="null" installurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js" updateurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js">
+	<Script basedir="Minibuffer" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Minibuffer" enabled="true" filename="minibuffer.user.js" installTime="1354076029683" modified="1444572165000" name="Minibuffer" namespace="http://white.s151.xrea.com/" noframes="false" runAt="document-end" updateMetaStatus="fail" uuid="e525ce7a-ade0-244e-8526-94a2e3c51742" version="null" installurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js" updateurl="http://exe.tyo.ro/2011/11/11/script/minibuffer.user.js">
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_getValue</Grant>
 		<Grant>GM_registerMenuCommand</Grant>
@@ -8,7 +8,7 @@
 		<Grant>unsafeWindow</Grant>
 		<Include>https://www.google.*/search?*</Include>
 	</Script>
-	<Script basedir="google_search_ajax_kille" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="auto redirect to the non-AJAX URL." enabled="true" noframes="false" filename="google_search_ajax_kille.user.js" installTime="1335529367761" modified="1438252633000" name="Google Search AJAX Killer" namespace="" runAt="document-end" updateMetaStatus="unknown" uuid="4e2714f9-81fa-824c-b9fe-3e791a6135b5" version="1.0" installurl="null" updateurl="null">
+	<Script basedir="google_search_ajax_kille" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="auto redirect to the non-AJAX URL." enabled="true" filename="google_search_ajax_kille.user.js" installTime="1335529367761" modified="1444572165000" name="Google Search AJAX Killer" namespace="" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="4e2714f9-81fa-824c-b9fe-3e791a6135b5" version="1.0" updateurl="null">
 		<Grant>none</Grant>
 		<Include>http://www.google.com/*</Include>
 		<Include>http://www.google.co.jp/*</Include>
@@ -16,21 +16,21 @@
 		<Include>http://www.google.*/*</Include>
 		<Include>https://encrypted.google.com/*</Include>
 	</Script>
-	<Script basedir="nicoantifocus" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="ニコニコ動画で、Flashプレイヤーにフォーカスしないようにする。" enabled="true" noframes="false" filename="nicoantifocus.user.js" installTime="1335529367764" modified="1438252633000" name="NicoAntiFocus" namespace="http://d.hatena.ne.jp/nokturnalmortum/20080802/1217633913" runAt="document-end" updateMetaStatus="unknown" uuid="f342b0c1-d5ee-bf4a-9638-86813ec0a298" version="null" installurl="null" updateurl="null">
+	<Script basedir="nicoantifocus" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="ニコニコ動画で、Flashプレイヤーにフォーカスしないようにする。" enabled="true" filename="nicoantifocus.user.js" installTime="1335529367764" modified="1444572165000" name="NicoAntiFocus" namespace="http://d.hatena.ne.jp/nokturnalmortum/20080802/1217633913" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="f342b0c1-d5ee-bf4a-9638-86813ec0a298" version="null" updateurl="null">
 		<Grant>none</Grant>
 		<Include>http://www.nicovideo.jp/watch/*</Include>
 		<Include>http://de.nicovideo.jp/watch/*</Include>
 		<Include>http://es.nicovideo.jp/watch/*</Include>
 		<Include>http://tw.nicovideo.jp/watch/*</Include>
 	</Script>
-	<Script basedir="amazon_short_uri" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Short URI for amazon." enabled="true" noframes="false" filename="amazon_short_uri.user.js" installTime="1335529367765" modified="1438252633000" name="Amazon short URI" namespace="http://www.misao.gr.jp/~koshian/" runAt="document-end" updateMetaStatus="unknown" uuid="15f74b76-f124-6f42-8236-97dede1a8672" version="null" installurl="null" updateurl="null">
+	<Script basedir="amazon_short_uri" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Short URI for amazon." enabled="true" filename="amazon_short_uri.user.js" installTime="1335529367765" modified="1444572165000" name="Amazon short URI" namespace="http://www.misao.gr.jp/~koshian/" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="15f74b76-f124-6f42-8236-97dede1a8672" version="null" updateurl="null">
 		<Grant>none</Grant>
 		<Include>http://www.amazon.co.jp/*</Include>
 		<Include>http://amazon.co.jp/*</Include>
 		<Include>http://www.amazon.jp/*</Include>
 		<Include>http://amazon.jp/*</Include>
 	</Script>
-	<Script basedir="social-bookmark-counter-on-google-search" checkRemoteUpdates="1" dependhash="19ddcdd622a468161879e765c56b4e5d93baa5d1" description="Script Summary: Supporting Delicious, Facebook, Twitter, Hatena, Digg and StumbleUpon." enabled="true" noframes="false" filename="115527.user.js" installTime="1400987492000" modified="1442884397000" name="social-bookmark-counter-on-google-search" namespace="https://github.com/ikeikeikeike" runAt="document-end" updateMetaStatus="unknown" uuid="bd7586bb-3c23-ec44-9922-8dc8b198b8e0" version="0.9.1" installurl="https://userscripts.org/scripts/source/115527.user.js" updateurl="https://userscripts.org/scripts/source/115527.meta.js">
+	<Script author="Tatsuo Ikeda &lt;jp.ne.co.jp at gmail&gt; http://about.me/ikeikeikeike" basedir="social-bookmark-counter-on-google-search" checkRemoteUpdates="1" dependhash="19ddcdd622a468161879e765c56b4e5d93baa5d1" description="Script Summary: Supporting Delicious, Facebook, Twitter, Hatena, Digg and StumbleUpon." enabled="true" filename="115527.user.js" installTime="1400987492000" modified="1444572165000" name="social-bookmark-counter-on-google-search" namespace="https://github.com/ikeikeikeike" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="bd7586bb-3c23-ec44-9922-8dc8b198b8e0" version="0.9.1" installurl="https://userscripts.org/scripts/source/115527.user.js" updateurl="https://userscripts.org/scripts/source/115527.meta.js">
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_xmlhttpRequest</Grant>
 		<Include>http://www.google.*/search*</Include>
@@ -40,11 +40,11 @@
 		<Require filename="jquery-2.0.3.min.js"/>
 		<Require filename="bookmarkhub.js"/>
 	</Script>
-	<Script basedir="Google_Search_Tools_Back" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Brings back Google search tools to left side and displays drop-down menu items." enabled="true" noframes="false" filename="Google_Search_Tools_Back.user.js" installTime="1428158474000" modified="1438252633000" name="Google Search Tools Back" namespace="http://userstyles.org" runAt="document-start" updateMetaStatus="ok" uuid="2581374d-689f-6648-b0c5-96990b6b13dc" version="11.8" installurl="https://greasyfork.org/scripts/2959-google-search-tools-back/code/Google%20Search%20Tools%20Back.user.js" updateurl="https://greasyfork.org/scripts/2959-google-search-tools-back/code/Google%20Search%20Tools%20Back.user.js">
+	<Script author="Ming-Hsien Lin (akiratw)" basedir="Google_Search_Tools_Back" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="Brings back Google search tools to left side and displays drop-down menu items." enabled="true" filename="Google_Search_Tools_Back.user.js" installTime="1428158474000" modified="1444572165000" name="Google Search Tools Back" namespace="http://userstyles.org" noframes="false" runAt="document-start" updateMetaStatus="ok" uuid="2581374d-689f-6648-b0c5-96990b6b13dc" version="11.8" installurl="https://greasyfork.org/scripts/2959-google-search-tools-back/code/Google%20Search%20Tools%20Back.user.js" updateurl="https://greasyfork.org/scripts/2959-google-search-tools-back/code/Google%20Search%20Tools%20Back.user.js">
 		<Grant>none</Grant>
 		<Include>*</Include>
 	</Script>
-	<Script basedir="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites)" checkRemoteUpdates="1" dependhash="2f9d4b8e3e6f4abd6c0bc55f0e10d3b53dd26773" description="Block unwanted sites from your Google, DuckDuckGo, Startpage.com, Bing and Yahoo search results. For Firefox+Greasemonkey or Chrome+Tampermonkey. v1.7.0 2015-10-06" enabled="true" noframes="false" filename="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites).user.js" installTime="1444224963000" modified="1444224963000" name="Google Hit Hider by Domain (Search Filter / Block Sites)" namespace="JeffersonScher" runAt="document-end" updateMetaStatus="ok" uuid="b6ac5fcd-46a5-2849-a3ea-65b764eee639" version="1.7.0" installurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js" updateurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js">
+	<Script author="Jefferson &quot;jscher2000&quot; Scher" basedir="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites)" checkRemoteUpdates="1" dependhash="2f9d4b8e3e6f4abd6c0bc55f0e10d3b53dd26773" description="Block unwanted sites from your Google, DuckDuckGo, Startpage.com, Bing and Yahoo search results. For Firefox+Greasemonkey or Chrome+Tampermonkey. v1.7.0 2015-10-06" enabled="true" filename="Google_Hit_Hider_by_Domain_(Search_Filter_Block_Sites).user.js" installTime="1444224963000" modified="1444572165000" name="Google Hit Hider by Domain (Search Filter / Block Sites)" namespace="JeffersonScher" noframes="false" runAt="document-end" updateMetaStatus="ok" uuid="b6ac5fcd-46a5-2849-a3ea-65b764eee639" version="1.7.0" installurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js" updateurl="https://greasyfork.org/scripts/1682-google-hit-hider-by-domain-search-filter-block-sites/code/Google%20Hit%20Hider%20by%20Domain%20(Search%20Filter%20%20Block%20Sites).user.js">
 		<Grant>GM_addStyle</Grant>
 		<Grant>GM_getValue</Grant>
 		<Grant>GM_setValue</Grant>
@@ -64,7 +64,7 @@
 		<Include>http*://search.yahoo.co.jp/*</Include>
 		<Resource name="mycon" filename="gfrk-GHHbD-ver170.png" mimetype="image/png"/>
 	</Script>
-	<Script basedir="AutoPagerize" checkRemoteUpdates="1" dependhash="1ed5200bbbb9857d51e432b3d367af6967a3c1f3" description="loading next page and inserting into current page." enabled="true" noframes="false" filename="8551.user.js" installTime="1439445511000" modified="1439445511000" name="AutoPagerize" namespace="http://swdyh.yu.to/" runAt="document-end" updateMetaStatus="unknown" uuid="f66a28b5-a272-1b49-81e0-84ae293e0d12" version="0.0.66" installurl="http://userscripts-mirror.org/scripts/source/8551.user.js" updateurl="https://userscripts.org/scripts/source/8551.user.js" icon="icon_032.png">
+	<Script basedir="AutoPagerize" checkRemoteUpdates="1" dependhash="1ed5200bbbb9857d51e432b3d367af6967a3c1f3" description="loading next page and inserting into current page." enabled="true" filename="8551.user.js" installTime="1439445511000" modified="1444572165000" name="AutoPagerize" namespace="http://swdyh.yu.to/" noframes="false" runAt="document-end" updateMetaStatus="unknown" uuid="f66a28b5-a272-1b49-81e0-84ae293e0d12" version="0.0.66" installurl="http://userscripts-mirror.org/scripts/source/8551.user.js" updateurl="https://userscripts.org/scripts/source/8551.user.js" icon="icon_032.png">
 		<Exclude>https://mail.google.com/*</Exclude>
 		<Exclude>http://b.hatena.ne.jp/*</Exclude>
 		<Exclude>http://www.facebook.com/plugins/like.php*</Exclude>
@@ -78,5 +78,18 @@
 		<Include>http://*</Include>
 		<Include>https://*</Include>
 		<UserExclude>http://matome.naver.jp/*</UserExclude>
+	</Script>
+	<Script basedir="Google_Search_AJAX_Killer" checkRemoteUpdates="1" dependhash="da39a3ee5e6b4b0d3255bfef95601890afd80709" description="auto redirect to the non-AJAX URL." enabled="true" filename="101838.user.js" installTime="1445778985000" modified="1445778985000" name="Google Search AJAX Killer" namespace="userscripts-mirror.org" noframes="false" runAt="document-end" updateMetaStatus="fail" uuid="67eb0ea5-6a49-ab40-a3b3-c4fc8b5e2e7d" version="1.0" installurl="http://userscripts-mirror.org/scripts/source/101838.user.js" updateurl="http://userscripts-mirror.org/scripts/source/101838.user.js">
+		<Grant>none</Grant>
+		<Include>http://www.google.com/*</Include>
+		<Include>http://www.google.co.jp/*</Include>
+		<Include>http://www.google.*/*</Include>
+		<Include>https://encrypted.google.com/*</Include>
+	</Script>
+	<Script author="segabito macmoto" basedir="ZenzaWatch" checkRemoteUpdates="1" dependhash="f16c059384da87936ea37e8a8bd9904ffe3445a6" description="Ginzaに行かなくても動画を再生" enabled="true" filename="ZenzaWatch.user.js" installTime="1455541394000" modified="1455541394000" name="ZenzaWatch" namespace="https://github.com/segabito/" noframes="false" runAt="document-end" updateMetaStatus="ok" uuid="12a896f7-21a8-a341-b57f-8068a73f1e5e" version="0.10.7" installurl="https://greasyfork.org/scripts/14391-zenzawatch/code/ZenzaWatch.user.js" updateurl="https://greasyfork.org/scripts/14391-zenzawatch/code/ZenzaWatch.user.js">
+		<Grant>none</Grant>
+		<Match>http://www.nicovideo.jp/*</Match>
+		<Match>http://ext.nicovideo.jp/*</Match>
+		<Require filename="lodash.js"/>
 	</Script>
 </UserScriptConfig>
