@@ -2,10 +2,10 @@
 // @name           Amazon short URI
 // @namespace      http://www.misao.gr.jp/~koshian/
 // @description    Short URI for amazon.
-// @include        http://www.amazon.co.jp/*
-// @include        http://amazon.co.jp/*
-// @include        http://www.amazon.jp/*
-// @include        http://amazon.jp/*
+// @include        https://www.amazon.co.jp/*
+// @include        https://amazon.co.jp/*
+// @include        https://www.amazon.jp/*
+// @include        https://amazon.jp/*
 // ==/UserScript==
 
 (function() {
@@ -13,7 +13,7 @@
     if (asin == null) {
         asin = document.getElementsByName('ASIN.0')[0];
     }
-    var base = 'http://amazon.jp/';
+    var base = 'https://amazon.jp/';
     var dirs = ['dp/', 'o/ASIN/', 'gp/product/'];
     var panel;
 
