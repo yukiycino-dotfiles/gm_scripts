@@ -2809,7 +2809,9 @@ SiteinfoOperator.prototype = {
 		  });
 	  }
 	  GM_registerMenuCommand(this.name + ' - update siteinfo', this.updateSiteinfo);
-	  this.cached_siteinfo = this.getCache();
+	  // Disable it because it does not work in Chrome
+	  // this.cached_siteinfo = this.getCache();
+	  this.cached_siteinfo = {};
 	  var self = this;
 	  this.urls.forEach(function(url){
 		  if(!self.cached_siteinfo || !self.cached_siteinfo[url] || self.cached_siteinfo[url].expire < new Date()){
