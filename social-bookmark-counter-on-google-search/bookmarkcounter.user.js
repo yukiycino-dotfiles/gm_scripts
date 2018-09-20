@@ -350,6 +350,9 @@ function diggCountView(link) {
  * hatena bookmark
  */
 function hatebuCountView(link) {
+  if (!link) {
+    return
+  }
   var bookmarker = new Bookmarkhub.Bookmarker(link.href);
 
   bookmarker.hatena()
