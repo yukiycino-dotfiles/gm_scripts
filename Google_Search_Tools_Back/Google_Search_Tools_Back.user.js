@@ -312,4 +312,11 @@
       document.documentElement.appendChild(node);
     }
   }
+  const timer = setInterval(function() {
+    const elem = document.getElementById("hdtbMenus");
+    if (elem) {
+      elem.setAttribute("class", "hdtb-td-o");
+      clearInterval(timer);
+    }
+  }, 100);
 })();
