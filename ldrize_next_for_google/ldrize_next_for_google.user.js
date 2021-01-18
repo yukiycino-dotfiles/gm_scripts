@@ -107,6 +107,7 @@ class Manager {
     } else {
       pinCards.forEach((item) => {
         window.open(item.link);
+        item.unpin();
       });
     }
   }
