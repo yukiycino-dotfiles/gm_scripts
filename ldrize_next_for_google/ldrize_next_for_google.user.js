@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         LDRize Next for Google
 // @namespace    https://github.com/yuki-ycino
-// @version      0.3
+// @version      0.4
 // @author       Yuki Yano, takker
 // @include       /^https://www.google.com/search?.*/
 // ==/UserScript==
@@ -83,7 +83,7 @@ class Manager {
       this.updateItems();
     }
     this.present.scrollIntoView(true);
-    window.scrollBy(0, -400);
+    window.scrollBy(0, -(window.innerHeight * 0.2));
   }
   selectPrev() {
     // Go backword only when the previous card exists.
@@ -93,7 +93,7 @@ class Manager {
       this.present.select();
     }
     this.present.scrollIntoView(true);
-    window.scrollBy(0, -400);
+    window.scrollBy(0, -(window.innerHeight * 0.2));
   }
 
   open({ newTab = false } = {}) {
