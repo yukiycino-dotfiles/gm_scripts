@@ -37,10 +37,6 @@ body div[data-testid=sidebarColumn] > div > div > div > div > div.css-1dbjc4n > 
 
 a[aria-label=リスト],
 a[aria-label=ブックマーク],
-a[aria-label=ツイートする] {
-  display: none !important;
-}
-
 #layers > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
   display: none !important;
 }
