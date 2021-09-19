@@ -83,7 +83,7 @@ class Manager {
       this.updateItems();
     }
     this.present.scrollIntoView(true);
-    window.scrollBy(0, -(window.innerHeight * 0.2));
+    window.scrollBy(0, -(window.innerHeight * 0.12));
   }
   selectPrev() {
     // Go backword only when the previous card exists.
@@ -93,7 +93,7 @@ class Manager {
       this.present.select();
     }
     this.present.scrollIntoView(true);
-    window.scrollBy(0, -(window.innerHeight * 0.2));
+    window.scrollBy(0, -(window.innerHeight * 0.12));
   }
 
   open({ newTab = false } = {}) {
