@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         ChatGPT Auto Search with Model Selection Fix
+// @name         ChatGPT Auto Search with Model Selection
 // @version      1.0
-// @description  ChatGPT で自動検索を行うスクリプトです。クエリとターゲットモデルを URL パラメータで指定できます。また、ターゲットモデルを選択する際に、モデル名の一部を指定することができます。
+// @description  ChatGPT で自動検索を行うスクリプトです。
 // @author       Yuki Yano
 // @match        https://chatgpt.com/*
 // @grant        none
